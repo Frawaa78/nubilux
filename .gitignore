@@ -1,0 +1,35 @@
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules/
+vendor/
+
+# Environment and config
+.env
+.env.local
+
+# Database and backups
+*.sql
+*.db
+*.backup
+*.bak
+
+# Logs and temporary
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+
+# Test and debug files
+test-*.php
+*_test.php
+*_debug.php
+migrate.php
+
+# Git
+.git/
