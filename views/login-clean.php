@@ -21,8 +21,9 @@
         
         .header {
             background-color: #2C2D32;
-            padding: 20px 0;
+            padding: 24px 0; /* 20% økning fra 20px til 24px */
             text-align: center;
+            transition: padding 0.3s ease;
         }
         
         .logo {
@@ -36,6 +37,7 @@
             align-items: center;
             justify-content: center;
             padding: 40px 20px 20px;
+            transition: padding-top 0.3s ease;
         }
         
         .login-form {
@@ -150,7 +152,16 @@
             }
             
             .header {
-                padding: 16px 0;
+                padding: 19.2px 0; /* 20% økning fra 16px til 19.2px */
+            }
+            
+            /* Mobile keyboard optimization - kun på mobil */
+            .header.mobile-focused {
+                padding: 12px 0; /* Redusert padding når input har focus */
+            }
+            
+            .login-container.mobile-focused {
+                padding-top: 14px; /* 30% reduksjon fra 20px til 14px */
             }
             
             .logo {
@@ -238,5 +249,58 @@
             </div>
         </form>
     </div>
+    
+    <script>
+        // Detekter mobil enheter
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && window.innerWidth <= 480;
+        }
+        
+        // Funksjon for å håndtere mobile focus events
+        function handleMobileFocus() {
+            if (!isMobileDevice()) return;
+            
+            const header = document.querySelector('.header');
+            const loginContainer = document.querySelector('.login-container');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            
+            // Focus event - kun på mobil
+            function addMobileFocus() {
+                header.classList.add('mobile-focused');
+                loginContainer.classList.add('mobile-focused');
+            }
+            
+            // Blur event - kun på mobil
+            function removeMobileFocus() {
+                // Sjekk om noen av input-feltene fortsatt har focus
+                setTimeout(() => {
+                    if (document.activeElement !== emailInput && document.activeElement !== passwordInput) {
+                        header.classList.remove('mobile-focused');
+                        loginContainer.classList.remove('mobile-focused');
+                    }
+                }, 100);
+            }
+            
+            // Legg til event listeners
+            if (emailInput) {
+                emailInput.addEventListener('focus', addMobileFocus);
+                emailInput.addEventListener('blur', removeMobileFocus);
+            }
+            
+            if (passwordInput) {
+                passwordInput.addEventListener('focus', addMobileFocus);
+                passwordInput.addEventListener('blur', removeMobileFocus);
+            }
+        }
+        
+        // Kjør når siden lastes
+        document.addEventListener('DOMContentLoaded', handleMobileFocus);
+        
+        // Kjør på window resize for å håndtere orientering endringer
+        window.addEventListener('resize', function() {
+            setTimeout(handleMobileFocus, 100);
+        });
+    </script>
 </body>
 </html>
