@@ -79,7 +79,10 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.2s ease;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
         }
         
         .btn-primary {
@@ -96,6 +99,7 @@
             background-color: transparent;
             color: #2C2D32;
             border: 2px solid #2C2D32;
+            box-sizing: border-box;
         }
         
         .btn-secondary:hover {
