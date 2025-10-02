@@ -146,7 +146,7 @@
         }
         
         /* Mobile optimizations */
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
             .login-container {
                 padding: 20px 16px;
             }
@@ -157,11 +157,11 @@
             
             /* Mobile keyboard optimization - kun på mobil */
             .header.mobile-focused {
-                padding: 12px 0; /* Redusert padding når input har focus */
+                padding: 19.2px 0 !important; /* BEHOLDER samme padding som normalt */
             }
             
             .login-container.mobile-focused {
-                padding-top: 14px; /* 30% reduksjon fra 20px til 14px */
+                padding-top: 10px !important; /* 50% reduksjon fra 20px til 10px */
             }
             
             .logo {
@@ -251,14 +251,22 @@
     </div>
     
     <script>
-        // Detekter mobil enheter
+        // Forbedret mobile deteksjon for nye enheter som iPhone 17 Pro
         function isMobileDevice() {
-            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) && window.innerWidth <= 480;
+            // Sjekk for touch capability og skjermstørrelse
+            const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            const isSmallScreen = window.innerWidth <= 768; // Økt fra 480px for bedre støtte
+            
+            return isTouchDevice && isSmallScreen;
         }
         
         // Funksjon for å håndtere mobile focus events
         function handleMobileFocus() {
-            if (!isMobileDevice()) return;
+            const isMobile = isMobileDevice();
+            
+            if (!isMobile) {
+                return;
+            }
             
             const header = document.querySelector('.header');
             const loginContainer = document.querySelector('.login-container');
@@ -292,10 +300,15 @@
                 passwordInput.addEventListener('focus', addMobileFocus);
                 passwordInput.addEventListener('blur', removeMobileFocus);
             }
+            
+            // Alternativ: Legg til visual feedback for testing
+            // Fjernet rød ramme etter testing
         }
         
         // Kjør når siden lastes
-        document.addEventListener('DOMContentLoaded', handleMobileFocus);
+        document.addEventListener('DOMContentLoaded', function() {
+            handleMobileFocus();
+        });
         
         // Kjør på window resize for å håndtere orientering endringer
         window.addEventListener('resize', function() {
