@@ -13,6 +13,8 @@ if (isset($_GET['token'])) {
     if ($result) {
         $success = true;
         $message = 'E-posten din er nå verifisert! Du kan nå logge inn på kontoen din.';
+        // Set success message for login page
+        $_SESSION['success_message'] = 'E-posten din er verifisert! Du kan nå logge inn.';
     } else {
         $message = 'Ugyldig eller utløpt verifikasjonstoken. Be om ny verifikasjonsepost.';
     }
