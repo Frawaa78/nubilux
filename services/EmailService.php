@@ -1,7 +1,12 @@
 <?php
 // Email service using SendGrid API
+require_once __DIR__ . '/../core/Environment.php';
+
 class EmailService {
-    private static $apiKey = 'your_sendgrid_api_key_here'; // Replace with your actual SendGrid API key
+    private static function getApiKey() {
+        return Environment::get('SENDGRID_API_KEY', 'your_sendgrid_api_key_here');
+    }
+    
     private static $fromEmail = 'noreply@nubilux.com';
     private static $fromName = 'Nubilux';
     
@@ -118,7 +123,7 @@ class EmailService {
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'Authorization: Bearer ' . self::$apiKey,
+            'Authorization: Bearer ' . self::getApiKey(),
             'Content-Type: application/json'
         ]);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
