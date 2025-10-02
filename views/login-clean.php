@@ -73,7 +73,6 @@
         .btn {
             width: 100%;
             padding: 16px;
-            border: none;
             border-radius: 8px;
             font-size: 16px;
             font-weight: 600;
@@ -88,6 +87,7 @@
         .btn-primary {
             background-color: #2C2D32;
             color: white;
+            border: 1px solid #2C2D32;
         }
         
         .btn-primary:hover {
@@ -98,7 +98,7 @@
         .btn-secondary {
             background-color: transparent;
             color: #2C2D32;
-            border: 2px solid #2C2D32;
+            border: 1px solid #2C2D32;
             box-sizing: border-box;
         }
         
@@ -184,7 +184,7 @@
     </div>
     
     <div class="login-container">
-        <form class="login-form" method="POST" action="login.php">
+        <form class="login-form" method="POST" action="index.php">
             <?php if (!empty($errors)): ?>
                 <div class="error-message">
                     <?php foreach ($errors as $error): ?>
