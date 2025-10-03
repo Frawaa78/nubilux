@@ -56,11 +56,7 @@ class User {
     public static function verifyPassword($email, $password) {
         $user = self::findByEmail($email);
         if ($user && password_verify($password, $user['password'])) {
-            // Check if email is verified
-            if (!$user['email_verified']) {
-                return false; // Email not verified
-            }
-            return $user;
+            return $user; // Return user regardless of email verification status
         }
         return false;
     }
