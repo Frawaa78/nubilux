@@ -25,7 +25,7 @@ abstract class Controller {
     
     protected function requireAuth() {
         if (!Auth::check()) {
-            $this->redirect('/login.php');
+            $this->redirect('/index.php');
         }
     }
     

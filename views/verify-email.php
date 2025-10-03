@@ -56,7 +56,7 @@
                             </div>
                             <h3 class="text-success mb-3">Vellykket!</h3>
                             <p class="mb-4"><?= htmlspecialchars($message) ?></p>
-                            <a href="login.php" class="btn btn-success btn-lg">
+                            <a href="index.php" class="btn btn-success btn-lg">
                                 Logg inn nå
                             </a>
                         <?php else: ?>

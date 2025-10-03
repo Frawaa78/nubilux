@@ -216,7 +216,7 @@
                 <div class="success-message">
                     <?= htmlspecialchars($successMessage) ?>
                 </div>
-                <a href="login.php" class="btn btn-secondary">
+                <a href="index.php" class="btn btn-secondary">
                     Tilbake til innlogging
                 </a>
             <?php else: ?>
@@ -238,7 +238,7 @@
                         Send tilbakestillingslenke
                     </button>
                     
-                    <a href="login.php" class="btn btn-secondary">
+                    <a href="index.php" class="btn btn-secondary">
                         Tilbake til innlogging
                     </a>
                 </form>

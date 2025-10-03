@@ -49,7 +49,7 @@ $user = Auth::user();
                         </li>
                     <?php else: ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="/login.php">Logg inn</a>
+                            <a class="nav-link" href="/index.php">Logg inn</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/register.php">Registrer</a>
