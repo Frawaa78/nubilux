@@ -29,5 +29,5 @@ if ($_POST) {
     }
 }
 
-include 'views/register.php';
+include 'views/register-clean.php';
 ?>
